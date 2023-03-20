@@ -7,7 +7,7 @@ let package = Package(
     name: "AmiiboAPI",
     platforms: [
         .macOS(.v10_15),
-        .iOS(.v11),
+        .iOS(.v13),
         .tvOS(.v11),
         .watchOS(.v4),
     ],
