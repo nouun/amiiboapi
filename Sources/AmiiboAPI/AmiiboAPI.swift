@@ -183,7 +183,7 @@ public struct AmiiboAPI {
     ///
     /// - Returns: The amiibo characters with matching names.
     public static func characters(byName name: String) async -> Result<[AmiiboCharacter], Error> {
-        await fetchList(endpoint: "/character?name=\(encode(name))")
+        await fetchList(endpoint: "/character?name=\(name)")
     }
     
     
