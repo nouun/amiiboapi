@@ -8,6 +8,9 @@
 import Foundation
 
 public struct Amiibo: Decodable {
+    /// The 16 character hexadecimal identifier for the amiibo.
+    public var id: String { self.head + self.tail }
+
     /// The first eight values of the hexadecimal to recognize the amiibo.
     public let head: String
     
