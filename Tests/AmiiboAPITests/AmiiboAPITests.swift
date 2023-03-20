@@ -34,7 +34,7 @@ final class AmiiboAPITests: XCTestCase {
         let types = try await AmiiboAPI.types().get()
         XCTAssertNotEqual(types.count, 0)
         
-        let named = try await AmiiboAPI.type(byName: "figure").get()
+        let named = try await AmiiboAPI.types(byName: "figure").get()
         XCTAssertNotEqual(named.count, 0)
         
         let keyed = try await AmiiboAPI.type(byKey: "0x00").get()
@@ -67,7 +67,7 @@ final class AmiiboAPITests: XCTestCase {
         let types = try await AmiiboAPI.characters().get()
         XCTAssertNotEqual(types.count, 0)
         
-        let named = try await AmiiboAPI.character(byName: "Mario").get()
+        let named = try await AmiiboAPI.characters(byName: "Mario").get()
         XCTAssertNotEqual(named.count, 0)
         
         let keyed = try await AmiiboAPI.character(byKey: "0x0000").get()
