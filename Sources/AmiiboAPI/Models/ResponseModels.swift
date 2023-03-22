@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct ResponseAmiibo<T: Decodable>: Decodable {
+struct ResponseAmiibo<T: Codable>: Codable {
     let code: Int?
     let error: String?
     
     let amiibo: T?
 }
 
-struct ResponseUpdated: Decodable {
+struct ResponseUpdated: Codable {
     let lastUpdated: Date
     
     enum CodingKeys: String, CodingKey {

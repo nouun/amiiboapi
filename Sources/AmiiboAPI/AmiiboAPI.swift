@@ -206,7 +206,7 @@ public struct AmiiboAPI {
     ///   - of: The data type of list.
     ///
     /// - Returns: A parsed API response in the form of a list.
-    private static func fetchList<T: Decodable>(endpoint: String, of: T.Type = T.self) async -> Result<[T], Error> {
+    private static func fetchList<T: Codable>(endpoint: String, of: T.Type = T.self) async -> Result<[T], Error> {
         await fetch(endpoint: endpoint, in: ResponseAmiibo<[T]>.self, parseData: { $0.amiibo ?? [] })
     }
     
@@ -217,7 +217,7 @@ public struct AmiiboAPI {
     ///   - of: The data type of the object.
     ///
     /// - Returns: A parsed API response.
-    private static func fetch<T: Decodable>(endpoint: String, of: T.Type = T.self) async -> Result<Optional<T>, Error> {
+    private static func fetch<T: Codable>(endpoint: String, of: T.Type = T.self) async -> Result<Optional<T>, Error> {
         await fetch(endpoint: endpoint, in: ResponseAmiibo<T>.self, parseData: { $0.amiibo })
     }
     
@@ -230,7 +230,7 @@ public struct AmiiboAPI {
     ///   - parseData: Parse `in` to `out`.
     ///
     /// - Returns: The parsed API response.
-    private static func fetch<In: Decodable, Out: Decodable>(
+    private static func fetch<In: Codable, Out: Codable>(
         endpoint: String,
         in: In.Type = In.self,
         out: Out.Type = Out.self,

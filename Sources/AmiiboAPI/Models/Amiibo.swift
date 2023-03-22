@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Amiibo: Decodable {
+public struct Amiibo: Codable {
     /// The 16 character hexadecimal identifier for the amiibo.
     public var id: String { self.head + self.tail }
 
@@ -49,7 +49,7 @@ public struct Amiibo: Decodable {
     public let gamesSwitch: [AmiiboGame]?
 }
 
-public struct AmiiboRelease: Decodable {
+public struct AmiiboRelease: Codable {
     /// The release date in Australia.
     public let au: Date?
     
@@ -77,7 +77,7 @@ public struct AmiiboRelease: Decodable {
     }
 }
 
-public struct AmiiboGame: Decodable {
+public struct AmiiboGame: Codable {
     /// A list of game IDs.
     public let id: [String]
     
@@ -94,7 +94,7 @@ public struct AmiiboGame: Decodable {
     }
 }
 
-public struct AmiiboUsage: Decodable {
+public struct AmiiboUsage: Codable {
     /// How the amiibo can be used.
     public let usage: String
     

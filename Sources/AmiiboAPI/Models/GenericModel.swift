@@ -12,7 +12,7 @@ public typealias AmiiboGameSeries = GenericModel
 public typealias AmiiboSeries = GenericModel
 public typealias AmiiboCharacter = GenericModel
 
-public struct GenericModel: Decodable {
+public struct GenericModel: Codable {
     /// The key.
     public let key: String
     
