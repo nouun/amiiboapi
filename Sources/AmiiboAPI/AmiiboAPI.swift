@@ -17,11 +17,11 @@ public struct AmiiboAPI {
     ///   - character: Filter by character. Example: `0x1996`, `Mewtwo`
     ///   - gameSeries: Filter by game series. Example: `0x22c`, `Chibi Robo`
     ///   - amiiboSeries: Filter by series. Example: `0x10`, `BoxBoy!`
-    ///   - showGames: Includes the games the amiibo can be used in.
-    ///   - showUsage: Includes the games the amiibo can be used in and how it is used.
+    ///   - withGames: Includes the games the amiibo can be used in.
+    ///   - withUsage: Includes the games the amiibo can be used in and how it is used.
     ///
     /// - Returns: A list of amiibo which fit the filter criteria.
-    public static func amiibo(
+    public static func amiibos(
         head: String? = nil,
         tail: String? = nil,
         name: String? = nil,
@@ -29,8 +29,8 @@ public struct AmiiboAPI {
         character: String? = nil,
         gameSeries: String? = nil,
         amiiboSeries: String? = nil,
-        showGames: Bool = false,
-        showUsage: Bool = false
+        withGames: Bool = false,
+        withUsage: Bool = false
     ) async -> Result<[Amiibo], Error> {
         var error: Error? = nil
         if (head != nil && head?.count != 8) {
@@ -53,8 +53,8 @@ public struct AmiiboAPI {
             .filter { $0.value != nil }
             .map { "\($0.key)=\($0.value!)" }
             .joined(separator: "&")
-            .append(if: showGames, "&showgames")
-            .append(if: showUsage, "&showusage")
+            .append(if: withGames, "&showgames")
+            .append(if: withUsage, "&showusage")
         
         return await fetchList(endpoint: "/amiibo/?\(args)")
     }

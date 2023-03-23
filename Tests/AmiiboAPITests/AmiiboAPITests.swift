@@ -3,13 +3,13 @@ import XCTest
 
 final class AmiiboAPITests: XCTestCase {
     func testFetchAmiibos() async throws {
-        let allAmiibos = try await AmiiboAPI.amiibo().get()
+        let allAmiibos = try await AmiiboAPI.amiibos().get()
         XCTAssertNotEqual(allAmiibos.count, 0)
         
-        let marioAmiibos = try await AmiiboAPI.amiibo(character: "mario").get()
+        let marioAmiibos = try await AmiiboAPI.amiibos(character: "mario").get()
         XCTAssertNotEqual(marioAmiibos.count, 0)
         
-        let emptyAmiibos = try await AmiiboAPI.amiibo(character: "thisdoesntexist").get()
+        let emptyAmiibos = try await AmiiboAPI.amiibos(character: "thisdoesntexist").get()
         XCTAssertEqual(emptyAmiibos.count, 0)
         
         let amiibo = try await AmiiboAPI.amiibo(byID: "0000000000000002").get()
@@ -20,7 +20,7 @@ final class AmiiboAPITests: XCTestCase {
     }
     
     func testFetchAmiibosUsages() async throws {
-        let amiibos = try await AmiiboAPI.amiibo(head: "00000000", tail: "00000002", showUsage: true).get()
+        let amiibos = try await AmiiboAPI.amiibos(head: "00000000", tail: "00000002", withUsage: true).get()
         XCTAssertNotEqual(amiibos.count, 0)
         
         let games = amiibos[0].gamesSwitch
